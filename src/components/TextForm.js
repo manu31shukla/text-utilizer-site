@@ -34,6 +34,17 @@ export default function TextForm(props) {
    }, { word: '', count: 0 })
    return max.word
  }
+ const handleExtraSpaces =  () => {
+  let newText =  text.split(/[ ]+/);
+  setText(newText.join(" "))
+ }
+   const handleCopy= ()=> {
+    console.log("Text is copied");
+    var text = document.getElementById("myBox")
+    text.select();
+    navigator.clipboard.writeText(text.value);
+
+   }
     const handleUpperCaseClick= ()=> {
             console.log("Upper case was clicked"+ text);
             let newText = text.toUpperCase();
@@ -73,6 +84,8 @@ export default function TextForm(props) {
        <button className="btn btn-primary mx-2" onClick={handleLowerCaseClick}>Convert to LowerCase</button>
        <button className="btn btn-primary mx-2" onClick={handleFreq}>Most frequent phrases</button>
        <button className="btn btn-primary mx-2" onClick={handleClear}>Clear Text</button>
+       <button className="btn btn-primary mx-2" onClick={handleCopy}>Copy Text</button>
+       <button className="btn btn-primary mx-2" onClick={handleExtraSpaces}>Remove Extra Spaces</button>
 
    </div>
     <div className="container" my-4>
